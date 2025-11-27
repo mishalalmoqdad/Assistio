@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Privacy — Assisttio</title>
+  <meta name="description" content="Privacy policy for Assisttio — AI-driven customer service automation.">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a class="brand" href="index.html" aria-label="Assistio home"><div class="logo"><img src="assets/images/logo.png" alt="Assistio logo" onerror="this.style.display='none'"></div><div class="title"><div class="name brand-name">//Assisttio</div><div class="tag">Privacy</div></div></a>
+      <nav class="nav"><a href="index.html">Home</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a><a href="login.html" class="btn">Login</a></nav>
+    </header>
+
+    <main>
+      <section class="card">
+        <h1>Privacy</h1>
+        <p class="small">Effective: <span id="pd"></span></p>
+
+        <p>We collect only the information needed to operate and improve Assisttio. We do not sell personal data.</p>
+
+        <h3>Collected data (examples)</h3>
+        <ul>
+          <li>Account info: name, email, company, phone (if provided)</li>
+          <li>Service data: messages, tickets, and metadata required to deliver the service</li>
+          <li>Technical data: logs, device and browser info for reliability and security</li>
+        </ul>
+
+        <h3>How we use it</h3>
+        <ul>
+          <li>Deliver and improve Assisttio features</li>
+          <li>Secure and monitor our services</li>
+          <li>Support integrations you enable (CRM, analytics)</li>
+        </ul>
+
+        <h3>Your choices</h3>
+        <p>Request access, correction, export, or deletion by emailing <a href="mailto:privacy@yourdomain.com">privacy@yourdomain.com</a>. Data retention and export options are available in your account settings.</p>
+
+        <h3>Security</h3>
+        <p>We use standard encryption and access controls to protect data.</p>
+      </section>
+    </main>
+
+    <footer class="footer"><div>© <span id="yrp"></span> Assisttio</div><div></div></footer>
+  </div>
+
+  <script>document.getElementById('yrp').textContent = new Date().getFullYear();document.getElementById('pd').textContent=new Date().toLocaleDateString();</script>
+</body>
+</html>

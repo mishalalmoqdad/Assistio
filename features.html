@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Features — Assistio</title>
+  <link href="styles.css" rel="stylesheet">
+  <script src="scripts.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a class="brand" href="index.html" aria-label="Assistio home">
+        <div class="logo"><img src="assets/images/logo.png" alt="Assistio logo" onerror="this.style.display='none'"></div>
+        <div class="title"><div class="name brand-name">//Assisttio</div><div class="tag">Capabilities</div></div>
+      </a>
+      <nav class="nav">
+        <a href="index.html">Home</a><a href="features.html">Features</a><a href="pricing.html">Pricing</a><a href="contact.html">Contact</a><a href="login.html" class="btn">Login</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Key features</h2>
+        <div class="features-grid">
+          <div class="feature-holder">
+            <img src="assets/images/logo1.png" alt="Feature 1 placeholder">
+            <div class="feature-caption">Feature title 1 — short supporting text goes here.</div>
+          </div>
+          <div class="feature-holder">
+            <img src="assets/images/email.png" alt="Feature 2 placeholder">
+            <div class="feature-caption">Feature title 2 — short supporting text goes here.</div>
+          </div>
+          <div class="feature-holder">
+            <img src="assets/images/WhatsApp.png" alt="Feature 3 placeholder">
+            <div class="feature-caption">Feature title 3 — short supporting text goes here.</div>
+          </div>
+          <div class="feature-holder">
+            <img src="assets/images/calendar.png" alt="Feature 4 placeholder">
+            <div class="feature-caption">Feature title 4 — short supporting text goes here.</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>© <span id="yr2"></span> Assistio</div>
+      <div style="color:var(--muted)">—</div>
+    </footer>
+  </div>
+
+  <script>document.getElementById('yr2').textContent = new Date().getFullYear();</script>
+</body>
+</html>

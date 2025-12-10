@@ -1,37 +1,75 @@
-/* scripts.js - very small helpers for mock site */
+// scripts.js – small helpers for the Assistio marketing site
 
-function handleSignup(e){
-  e.preventDefault();
-  // capture values and show simple confirmation - replace with real signup flow later
-  const fm = e.target;
-  const name = fm.name.value;
-  const email = fm.email.value;
-  alert('Thanks ' + name + '. We sent signup info to ' + email + '. (Mock)');
-  // here you would POST to your API or auth provider
+// Global signup handler (keeps compatibility with inline onsubmit="handleSignup(event)")
+function handleSignup(e) {
+    if (!e) return;
+    e.preventDefault();
+
+    const form = e.target;
+    const nameField = form.querySelector('[name="name"]');
+    const emailField = form.querySelector('[name="email"]');
+
+    const name = nameField ? nameField.value.trim() : "";
+    const email = emailField ? emailField.value.trim() : "";
+
+    const who = name || "there";
+
+    alert(
+        "Thanks " +
+            who +
+            ".\n\nThis is a demo signup handler. In production, this would send your details to the real backend or auth provider."
+    );
+
+    form.reset();
 }
 
-/* contact form handler example (Formspree works with a simple POST to their endpoint)
-   Replace action in contact form with your Formspree form URL or use Netlify forms.
-*/
+document.addEventListener("DOMContentLoaded", function () {
+    // 1) Attach signup handler automatically if a form has data-role="signup-form"
+    const signupForm =
+        document.querySelector('form[data-role="signup-form"]') ||
+        document.getElementById("signup-form");
 
-/* Google Sign-In: example for client-side usage with Google Identity Services.
-   Replace CLIENT_ID in login.html with your actual Client ID, and configure
-   redirect_uri and server-side token verification when you turn this into real auth.
-*/
-window.onload = function(){
-  // placeholder for any onload behavior
-};
+    if (signupForm && !signupForm.hasAttribute("onsubmit")) {
+        signupForm.addEventListener("submit", handleSignup);
+    }
 
-/* Basic fallback: if you want to drop a photo as 'photo.png' file, it will show automatically */
-const photoSlot = document.getElementById('photo-slot');
-if(photoSlot){
-  const img = document.createElement('img');
-  img.src = 'photo.png';
-  img.alt = 'You';
-  img.style.width='80px';
-  img.style.height='80px';
-  img.style.objectFit='cover';
-  img.style.borderRadius='8px';
-  img.onerror = ()=>{ /* keep placeholder text */ };
-  img.onload = ()=>{ photoSlot.textContent=''; photoSlot.appendChild(img); }
-}
+    // 2) Contact form demo handler (only when action="#")
+    const contactForm = document.querySelector("form.contact-form");
+    if (contactForm && contactForm.getAttribute("action") === "#") {
+        contactForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const nameInput = contactForm.querySelector("#name");
+            const name = nameInput ? nameInput.value.trim() : "there";
+
+            alert(
+                "Thank you, " +
+                    name +
+                    ".\n\nWe received your message. For the live site, replace `action=\"#\"` with your real endpoint (Formspree, Netlify forms, or your backend)."
+            );
+
+            contactForm.reset();
+        });
+    }
+
+    // 3) Optional photo-slot support for the old mock pages (dashboard/profile)
+    const photoSlot = document.getElementById("photo-slot");
+    if (photoSlot) {
+        const img = document.createElement("img");
+        img.src = "photo.png";
+        img.alt = "You";
+        img.style.width = "80px";
+        img.style.height = "80px";
+        img.style.objectFit = "cover";
+        img.style.borderRadius = "8px";
+
+        img.onerror = function () {
+            // If photo.png does not exist, keep any existing placeholder text.
+        };
+
+        img.onload = function () {
+            photoSlot.textContent = "";
+            photoSlot.appendChild(img);
+        };
+    }
+});
